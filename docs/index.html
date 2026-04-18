@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centro de Investigación Financiera | V5.7</title>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '769607062918048');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=769607062918048&ev=PageView&noscript=1"/>
+  </noscript>
+
+  <style>
+    * { box-sizing: border-box; }
+    :root{
+      --bg:#f4f7fb;
+      --card:#ffffff;
+      --text:#172033;
+      --muted:#5f6b7a;
+      --brand:#0d1b2a;
+      --brand-2:#16324f;
+      --accent:#0ea56b;
+      --accent-dark:#0a8b59;
+      --line:rgba(15,23,42,.08);
+      --shadow:0 10px 30px rgba(15,23,42,.08);
+      --radius:18px;
+    }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.68;
+    }
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:linear-gradient(135deg,var(--brand),var(--brand-2));
+      color:#fff;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      box-shadow:0 6px 24px rgba(0,0,0,.14);
+    }
+    .topbar-inner{
+      max-width:1120px;
+      margin:0 auto;
+      padding:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand-title{
+      font-size:20px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .nav-note{
+      font-size:13px;
+      opacity:.88;
+    }
+    .wrap{
+      max-width:1120px;
+      margin:0 auto;
+      padding:24px 16px 120px;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      gap:22px;
+      align-items:center;
+      background:var(--card);
+      border-radius:24px;
+      padding:30px;
+      box-shadow:var(--shadow);
+      margin-bottom:24px;
+    }
+    .eyebrow{
+      display:inline-block;
+      background:#e8f1fb;
+      color:#173f68;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:14px;
+    }
+    h1{
+      margin:0 0 14px;
+      font-size:42px;
+      line-height:1.14;
+      color:#0f172a;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:29px;
+      line-height:1.2;
+      color:#0f172a;
+    }
+    p{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size:17px;
+    }
+    .hero-image,
+    .media{
+      width:100%;
+      display:block;
+      border-radius:16px;
+      object-fit:cover;
+      min-height:260px;
+    }
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:18px 0 20px;
+    }
+    .chip{
+      background:#eef5ff;
+      color:#183a5d;
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:14px;
+      font-weight:700;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      background:var(--accent);
+      color:#fff;
+      text-decoration:none;
+      border:none;
+      border-radius:13px;
+      padding:15px 24px;
+      font-weight:700;
+      font-size:17px;
+      box-shadow:0 8px 20px rgba(14,165,107,.25);
+      transition:transform .15s ease, background .15s ease, opacity .15s ease;
+      cursor:pointer;
+    }
+    .btn:hover{ transform:translateY(-1px); background:var(--accent-dark); }
+    .btn-secondary{
+      background:#0f172a;
+      box-shadow:0 8px 20px rgba(15,23,42,.18);
+    }
+    .section{
+      background:var(--card);
+      border-radius:var(--radius);
+      padding:24px;
+      box-shadow:var(--shadow);
+      margin-bottom:20px;
+    }
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:22px;
+      align-items:center;
+    }
+    .bullets{
+      padding-left:20px;
+      margin:0;
+    }
+    .bullets li{
+      margin:0 0 12px;
+      color:#344256;
+    }
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      margin-top:16px;
+    }
+    .stat{
+      background:#f8fbff;
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:16px;
+    }
+    .stat strong{
+      display:block;
+      font-size:24px;
+      color:#0f172a;
+      margin-bottom:6px;
+    }
+    .cta-band{
+      background:linear-gradient(135deg,#0d1b2a,#16324f);
+      color:#fff;
+      border-radius:22px;
+      padding:24px;
+      box-shadow:var(--shadow);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+      margin:24px 0;
+    }
+    .cta-band p{
+      color:rgba(255,255,255,.85);
+      margin:0;
+    }
+    .cta-stack{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+    }
+    .quote-box{
+      padding:18px;
+      border-left:4px solid #0ea56b;
+      background:#f8fbff;
+      border-radius:0 14px 14px 0;
+      color:#314052;
+      font-size:16px;
+    }
+    .sticky-cta{
+      position:fixed;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:1200;
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(8px);
+      border-top:1px solid var(--line);
+      box-shadow:0 -8px 24px rgba(15,23,42,.08);
+      padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+    }
+    .sticky-inner{
+      max-width:1120px;
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .sticky-label{
+      font-size:14px;
+      font-weight:700;
+      color:#334155;
+    }
+    .footer-note{
+      text-align:center;
+      font-size:12px;
+      color:#7d8796;
+      padding-top:6px;
+    }
+    @media (max-width: 920px){
+      .hero,
+      .grid-2,
+      .stats,
+      .cta-band{
+        grid-template-columns:1fr;
+        flex-direction:column;
+        align-items:flex-start;
+      }
+      h1{ font-size:32px; }
+      h2{ font-size:24px; }
+      .topbar-inner,
+      .sticky-inner{ flex-direction:column; align-items:flex-start; }
+      .sticky-inner .btn{ width:100%; }
+      .sticky-label{ width:100%; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <div class="brand-title">Centro de Investigación Financiera Global</div>
+        <div class="nav-note">Análisis estructurado · aprendizaje guiado · acceso al grupo</div>
+      </div>
+      <a class="btn btn-secondary track-lead" data-cta-position="topbar" href="https://t.ly/OB4go">Acceder al Grupo</a>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Investigación · contexto · aprendizaje</span>
+        <h1>Aprender a leer el mercado con más estructura puede cambiar la calidad de tus decisiones.</h1>
+        <p>
+          La mayoría mira precios. Un grupo más preparado analiza contexto, narrativa,
+          disciplina y gestión del riesgo antes de actuar.
+        </p>
+        <div class="chips">
+          <span class="chip">Acciones de EE.UU.</span>
+          <span class="chip">Activos locales</span>
+          <span class="chip">Tendencias globales</span>
+          <span class="chip">Lectura estructurada</span>
+        </div>
+        <a class="btn track-lead" data-cta-position="hero" href="https://t.ly/OB4go">Entrar al Grupo de Análisis</a>
+      </div>
+      <div>
+        <img class="hero-image" src="https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1400&q=80" alt="Análisis financiero" />
+      </div>
+    </section>
+
+    <section class="section" id="core-content">
+      <div class="grid-2">
+        <div>
+          <h2>El verdadero problema no suele ser la información. Suele ser la falta de método.</h2>
+          <p>
+            Muchas personas consumen noticias, comentarios y movimientos del mercado,
+            pero sin un marco claro para interpretar qué importa y qué no.
+          </p>
+          <ul class="bullets">
+            <li>Entradas impulsivas sin tesis clara.</li>
+            <li>Demasiado ruido y poca jerarquía de información.</li>
+            <li>Decisiones emocionales frente a la volatilidad.</li>
+            <li>Dificultad para conectar contexto, timing y riesgo.</li>
+          </ul>
+        </div>
+        <div>
+          <img class="media" src="https://images.unsplash.com/photo-1559526324-593bc073d938?auto=format&fit=crop&w=1400&q=80" alt="Datos y análisis" />
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div>
+        <h2 style="color:#fff; margin-bottom:8px;">Acceso directo al grupo de aprendizaje</h2>
+        <p>Entra para revisar el enfoque, el contenido y la dinámica de análisis compartido.</p>
+      </div>
+      <div class="cta-stack">
+        <a class="btn track-lead" data-cta-position="mid_band" href="https://t.ly/OB4go">Unirse Ahora</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <div>
+          <img class="media" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80" alt="Estrategia y estudio" />
+        </div>
+        <div>
+          <h2>Qué trabajamos dentro del entorno de aprendizaje</h2>
+          <p>
+            No se trata de “adivinar” el siguiente movimiento. Se trata de entrenar una lectura más sólida del mercado.
+          </p>
+          <ul class="bullets">
+            <li>Lectura macro y narrativa del mercado.</li>
+            <li>Seguimiento de acciones de EE.UU. y sectores relevantes.</li>
+            <li>Observación de activos y temas locales.</li>
+            <li>Discusión educativa sobre estructura, disciplina y proceso.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="stats">
+        <div class="stat">
+          <strong>Marco</strong>
+          <span>Menos ruido, más estructura de análisis.</span>
+        </div>
+        <div class="stat">
+          <strong>Contexto</strong>
+          <span>Ideas ordenadas para entender mejor cada movimiento.</span>
+        </div>
+        <div class="stat">
+          <strong>Proceso</strong>
+          <span>Aprendizaje continuo con enfoque práctico.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="grid-2">
+        <div>
+          <h2>Qué encontrarás al entrar</h2>
+          <ul class="bullets">
+            <li>Explicaciones claras y fáciles de seguir.</li>
+            <li>Ejemplos de lectura del mercado y razonamiento.</li>
+            <li>Intercambio con otras personas interesadas en aprender.</li>
+            <li>Actualizaciones periódicas con enfoque educativo.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="quote-box">
+            “La diferencia entre reaccionar y entender suele comenzar cuando dejas de mirar el mercado como ruido y empiezas a observarlo con estructura.”
+          </div>
+          <img class="media" style="margin-top:14px;" src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1400&q=80" alt="Comunidad de aprendizaje" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Así se vive dentro del grupo</h2>
+      <p>
+        El objetivo no es solo recibir información, sino ver cómo se ordenan las ideas, cómo se hace una lectura de contexto y cómo otras personas convierten esa información en un proceso más disciplinado.
+      </p>
+      <div class="grid-2">
+        <div>
+          <div style="background:#f8fbff;border:1px solid rgba(15,23,42,.08);border-radius:18px;padding:18px;box-shadow:0 6px 16px rgba(15,23,42,.04);">
+            <div style="font-weight:700;color:#0f172a;margin-bottom:12px;">Vista previa de conversación</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+              <div style="background:#ffffff;border:1px solid rgba(15,23,42,.08);border-radius:14px;padding:12px 14px;">
+                <div style="font-size:13px;font-weight:700;color:#16324f;margin-bottom:6px;">Coordinación del grupo</div>
+                <div style="font-size:15px;color:#334155;">Hoy revisamos por qué un movimiento aislado no siempre cambia la estructura del mercado. Primero contexto, luego reacción.</div>
+              </div>
+              <div style="background:#ecfff6;border:1px solid rgba(14,165,107,.18);border-radius:14px;padding:12px 14px;align-self:flex-end;max-width:92%;">
+                <div style="font-size:13px;font-weight:700;color:#0a8b59;margin-bottom:6px;">Participante</div>
+                <div style="font-size:15px;color:#334155;">Eso me ayuda. Antes miraba el precio primero y trataba de entender después.</div>
+              </div>
+              <div style="background:#ffffff;border:1px solid rgba(15,23,42,.08);border-radius:14px;padding:12px 14px;">
+                <div style="font-size:13px;font-weight:700;color:#16324f;margin-bottom:6px;">Coordinación del grupo</div>
+                <div style="font-size:15px;color:#334155;">Exacto. La idea es construir criterio: qué mirar, cuándo importa y cómo evitar decisiones impulsivas.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <ul class="bullets">
+            <li>Se observa el mercado con más contexto y menos ruido.</li>
+            <li>Las ideas se explican con orden, no como señales sueltas.</li>
+            <li>Las preguntas forman parte del proceso de aprendizaje.</li>
+            <li>El foco está en mejorar la lectura y la disciplina, no en promesas rápidas.</li>
+          </ul>
+          <div class="stats" style="margin-top:18px;grid-template-columns:1fr 1fr;">
+            <div class="stat">
+              <strong>Contexto</strong>
+              <span>Se analiza primero el marco general antes de entrar en detalles.</span>
+            </div>
+            <div class="stat">
+              <strong>Discusión</strong>
+              <span>Las preguntas ayudan a convertir teoría en comprensión práctica.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div>
+        <h2 style="color:#fff; margin-bottom:8px;">No se trata de predecir. Se trata de prepararse mejor.</h2>
+        <p>Si quieres revisar el contenido y entender cómo está organizado, entra al grupo.</p>
+      </div>
+      <div class="cta-stack">
+        <a class="btn track-lead" data-cta-position="lower_band" href="https://t.ly/OB4go">Ver el Grupo</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Cómo empezar</h2>
+      <div class="grid-2">
+        <div>
+          <ul class="bullets">
+            <li><strong>1. Entra al grupo:</strong> revisa el contenido fijado y la estructura.</li>
+            <li><strong>2. Observa el enfoque:</strong> cómo se organizan las ideas y el contexto.</li>
+            <li><strong>3. Participa:</strong> preguntas y discusión ayudan a consolidar el proceso.</li>
+            <li><strong>4. Aplica con disciplina:</strong> menos impulsos, más método.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="quote-box">
+            Un buen proceso no elimina la incertidumbre, pero sí reduce los errores evitables.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div>
+        <h2 style="color:#fff; margin-bottom:8px;">Accede y evalúa por ti mismo</h2>
+        <p>Revisa el contenido, entiende el enfoque y decide si encaja con tu forma de aprender.</p>
+      </div>
+      <div class="cta-stack">
+        <a class="btn track-lead" data-cta-position="final_band" href="https://t.ly/OB4go">Entrar al Grupo</a>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      This content is for educational purposes only and does not constitute financial advice.
+    </div>
+  </main>
+
+  <div class="sticky-cta">
+    <div class="sticky-inner">
+      <div class="sticky-label">Acceso rápido al grupo de aprendizaje y análisis</div>
+      <a class="btn track-lead" data-cta-position="sticky" href="https://t.ly/OB4go">Entrar al Grupo</a>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var tracked = {
+        viewContent: false,
+        scroll50: false,
+        time30: false
+      };
+
+      function standardTrack(name, params) {
+        try {
+          if (typeof fbq === 'function') {
+            fbq('track', name, params || {});
+          }
+        } catch (e) {}
+      }
+
+      function customTrack(name, params) {
+        try {
+          if (typeof fbq === 'function') {
+            fbq('trackCustom', name, params || {});
+          }
+        } catch (e) {}
+      }
+
+      function isInView(el, offset) {
+        if (!el) return false;
+        var rect = el.getBoundingClientRect();
+        var trigger = offset || 0;
+        return rect.top <= (window.innerHeight - trigger) && rect.bottom >= 0;
+      }
+
+      function checkViewContent() {
+        if (tracked.viewContent) return;
+        var core = document.getElementById('core-content');
+        if (isInView(core, 80)) {
+          tracked.viewContent = true;
+          standardTrack('ViewContent', {
+            content_name: 'Core Content Section',
+            content_category: 'Financial Education Landing Page'
+          });
+        }
+      }
+
+      function checkScrollDepth() {
+        if (tracked.scroll50) return;
+        var doc = document.documentElement;
+        var scrollTop = window.pageYOffset || doc.scrollTop || 0;
+        var winHeight = window.innerHeight || doc.clientHeight;
+        var fullHeight = Math.max(doc.scrollHeight, doc.offsetHeight, doc.clientHeight);
+        var percent = ((scrollTop + winHeight) / fullHeight) * 100;
+        if (percent >= 50) {
+          tracked.scroll50 = true;
+          customTrack('ScrollDepth_50', {
+            percent: 50,
+            page: window.location.pathname
+          });
+        }
+      }
+
+      function initTimeTracking() {
+        setTimeout(function () {
+          if (tracked.time30) return;
+          tracked.time30 = true;
+          customTrack('TimeOnPage_30s', {
+            seconds: 30,
+            page: window.location.pathname
+          });
+        }, 30000);
+      }
+
+      function bindLeadButtons() {
+        var buttons = document.querySelectorAll('.track-lead');
+        buttons.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var pos = (btn.getAttribute('data-cta-position') || 'unknown').toLowerCase();
+            standardTrack('Lead', {
+              content_name: 'Join Group CTA',
+              cta_position: pos,
+              destination: 'https://t.ly/OB4go'
+            });
+          });
+        });
+      }
+
+      bindLeadButtons();
+      checkViewContent();
+      checkScrollDepth();
+      initTimeTracking();
+
+      window.addEventListener('scroll', function () {
+        checkViewContent();
+        checkScrollDepth();
+      });
+
+      window.addEventListener('load', function () {
+        checkViewContent();
+        checkScrollDepth();
+      });
+    })();
+  </script>
+</body>
+</html>
