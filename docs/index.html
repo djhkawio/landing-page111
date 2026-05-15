@@ -17,13 +17,14 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', '769607062918048');
+    fbq('init', '1685953679198775');
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=769607062918048&ev=PageView&noscript=1"/>
+      src="https://www.facebook.com/tr?id=1685953679198775&ev=PageView&noscript=1"/>
   </noscript>
+  <!-- End Meta Pixel Code -->
 
   <style>
     * { box-sizing: border-box; }
@@ -568,13 +569,18 @@
       function bindLeadButtons() {
         var buttons = document.querySelectorAll('.track-lead');
         buttons.forEach(function (btn) {
-          btn.addEventListener('click', function () {
+          btn.addEventListener('click', function (event) {
+            event.preventDefault();
             var pos = (btn.getAttribute('data-cta-position') || 'unknown').toLowerCase();
+            var href = btn.getAttribute('href');
             standardTrack('Lead', {
               content_name: 'Join Group CTA',
               cta_position: pos,
-              destination: 'https://t.ly/OB4go'
+              destination: href || 'https://t.ly/OB4go'
             });
+            setTimeout(function () {
+              window.location.href = href || 'https://t.ly/OB4go';
+            }, 500);
           });
         });
       }
